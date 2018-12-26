@@ -1,0 +1,110 @@
+//
+//  PrefixHeader.pch
+//  SheQuEJia
+//
+//  Created by 朱芳煦 on 16/1/12.
+//  Copyright © 2016年 Aisino. All rights reserved.
+//
+//  项目的PCH文件
+//  功能描述：通用数据定义在这个头文件下，全局可以使用
+
+#import "ASNavigationController.h"
+#import "AppDelegate.h"
+#import "ASCommonFunction.h"
+#import "ASDataManager.h"
+#import "HJCCheckUpdateManager.h"
+#import "MBProgressHUD+MJ.h"
+#import <YYModel/YYModel.h>
+#import "IQKeyboardManager.h"
+#import "ASAppInfo.h"
+
+
+// iOS10 注册 APNs 所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+//支付宝
+#import <AlipaySDK/AlipaySDK.h>
+//微信支付
+#import "WXApiManager.h"
+// 引入 JPush 功能所需头文件
+#import "JPUSHService.h"
+//分享
+#import <ShareSDK/ShareSDK.h>
+
+#import "Masonry.h"
+#import "ModelConst.h"
+#import "UIImageView+WebCache.h"
+#import "ASLocatorModel.h"
+#import "ASUserInfoModel.h"
+
+
+#import "UIFont+HPFont.h"
+#import "UIImage+HPCategory.h"
+#import "UIImageView+HPExtension.h"
+#import "UIImage+Extension.h"
+#import "UIColor+HPCategory.h"
+#import "UIButton+HPExtension.h"
+#import "UIButton+HPImageTitleSpacing.h"
+#import "UIView+HPFrame.h"
+#import "UILabel+HPExtension.h"
+#import "UIView+HPCategory.h"
+#import "UITextField+HPExtension.h"
+#import "UIViewController+HPExtension.h"
+#import "NSArray+HPSafe.h"
+#import "UIScrollView+MHRefresh.h"
+#import "NSString+HPPredicate.h"
+#import "NSString+HPMD5.h"
+#import "NSString+HPSafe.h"
+#import "NSDate+Category.h"
+#import "NSMutableDictionary+NullToNil.h"
+#import "NSDictionary+NullToNil.h"
+#import "UITableView+HPTableView.h"
+
+#define JKColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define WeakSelf(type)    __weak typeof(type) weak##type = type; // weak
+//NULL处理
+#define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? nil : obj; })
+
+#define ASLOCATOR_MODEL ([ASLocatorModel sharedInstance])
+#define ASUSER_INFO_MODEL ([ASUserInfoModel shareUserInfo])
+#define ASAPP_INFO ([ASAppInfo shareAppInfo])
+
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height == 568) ? YES : NO)
+#define IS_IPHONE6 (([[UIScreen mainScreen] bounds].size.height == 667) ? YES : NO)
+#define IS_IPHONE6PLUS (([[UIScreen mainScreen] bounds].size.height == 736)? YES : NO)
+#define  iPhone6_plus ([UIScreen mainScreen].bounds.size.width == 414.f && [UIScreen mainScreen].bounds.size.height == 736.f ? YES : NO)
+#define  iPhoneX      (([UIScreen mainScreen].bounds.size.width == 375.f && [UIScreen mainScreen].bounds.size.height == 812.f)||([UIScreen mainScreen].bounds.size.width == 414.f && [UIScreen mainScreen].bounds.size.height == 896.f) ? YES : NO)
+
+#define AS_SCREEN_WIDTH    ([UIScreen mainScreen].bounds.size.width)
+#define AS_SCREEN_HEIGHT   ([UIScreen mainScreen].bounds.size.height)
+#define AS_STATUS_BAR_H    ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define NAVIGATION_H  (iPhoneX ? 88 : 64)
+#define TABBAR_H (iPhoneX ? 83 : 49)
+
+
+#define AS_SCREEN_SCALE [[UIScreen mainScreen] bounds].size.height/736
+
+#define AS_SYSTEM_VERSION ([UIDevice currentDevice].systemVersion.floatValue)
+
+#define AS_MAIN_COLOR ([UIColor colorWithRed:59.0/255.0 green:122.0/255.0 blue:219.0/255.0 alpha:1.0])
+//#define AS_NAVIGATION_TITLE_TINT_COLOR ([UIColor colorWithRed:29.0/255.0 green:164.0/255.0 blue:252.0/255.0 alpha:1.0])
+#define AS_CONTROLLER_BACKGROUND_COLOR  ([UIColor hex:@"#F7FAFF"])
+#define ASLINE_VIEW_COLOR  ([UIColor colorWithRed:240.0/255.0 green:240.0/255.0 blue:240.0/255.0 alpha:1.0])
+
+
+// 获取图片资源
+#define GetImage(imageName)     [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+//设备系统版本
+#define kDeviceVersion [[UIDevice currentDevice] systemVersion].floatValue
+
+
+#define WeakSelf(type)    __weak typeof(type) weak##type = type; // weak
+
+#ifdef KTestModel
+#define DMLog(...) NSLog(__VA_ARGS__)
+#else
+#define DMLog(...)
+#endif
+
+
